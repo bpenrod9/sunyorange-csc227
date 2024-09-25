@@ -1,0 +1,21 @@
+<html> 
+<body> 
+
+<script> 
+	function addCommas(str) { 
+		let reversed = str.split('').reverse(); 
+		let result = []; 
+		
+		for (let i = 0; i < reversed.length; i++) { 
+			if (i > 0 && i % 3 === 0) { 
+				result.push (',') ; 
+			} 
+			result.push(reversed[i]); 
+			}
+		return result.reverse().join('');
+	}
+	console.log(addCommas("123456789"));
+</script>
+ 
+</body> 
+</html> 
