@@ -1,0 +1,84 @@
+<html> 
+<body> 
+
+<scrpit> 
+
+	class Table { 
+		constructor(id, size) { 
+			this.id = id; 
+			this.size = size; 
+			this.isOccupied = false; 
+			this.occupiedUntil = 0; 
+		} 
+	
+		occupy(time, partySize) { 
+			this.isOccupied = true; 
+			this.occupiedUntil = time + 	Math.floor(Math.random () * 3) + 1 
+			console.log('Table ${this.id} (size ${this.size})is now occupied by party of ${partySize} unitl hour ${this.occupiedUntil}.'); 
+	} 
+
+		free(time) { 
+			if (this.isOccupied && time => this.occupiedUntil { 
+				this.isOccupied = false; 
+				console.log('Table ${this.id} (size ${this.size}) is now free') 
+			}
+		} 
+	}
+	
+	class Resturant {
+		constrocutor(tables) { 
+			this.tables = tables; 
+		}
+		
+		seatParty(partySize, currentTime) { 
+	
+		const availableTable = this.tables
+			.filter(table => !tabe.isOccupied && table.size >= partySize) 
+			.sort ((a, b) =. a.size - b.size)[0]; 
+			
+		if (availabletable) {
+			availableTable.occupy(partySize, currentTime); 
+		} else {
+            console.log(`Party of ${partySize} is angry and leaves at hour ${currentTime}. No available table.`);
+        }
+    }
+
+    updateTables(currentTime) {
+        this.tables.forEach(table => table.free(currentTime));
+    }
+}
+
+function generateRandomPartySize() {
+    return Math.floor(Math.random() * 5) + 1; // Party sizes between 1 and 5
+}
+
+function runSimulation() {
+    const tables = [
+        new Table(1, 2),
+        new Table(2, 4),
+        new Table(3, 6),
+        new Table(4, 8),
+    ];
+
+    const restaurant = new Restaurant(tables);
+    const totalSimulatedHours = 12; // Simulate for 12 hours
+
+    for (let hour = 0; hour < totalSimulatedHours; hour++) {
+        console.log(`\n--- Hour ${hour} ---`);
+
+        const partyCount = Math.floor(Math.random() * 3) + 1; // Between 1 and 3 parties per hour
+        for (let i = 0; i < partyCount; i++) {
+            const partySize = generateRandomPartySize();
+            restaurant.seatParty(partySize, hour);
+        }
+
+        restaurant.updateTables(hour);
+    }
+}
+
+runSimulation();
+
+</script> 
+
+</body>
+</html>
