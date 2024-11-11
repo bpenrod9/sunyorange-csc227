@@ -1,0 +1,62 @@
+<html> 
+<body> 
+
+<script> 
+	function barrierUp (b) {
+		b.state = "on" 
+	} 
+	
+	function barrierDown (b) { 
+		b.state = "off" 
+		 
+	function advanceTrain (t) { 
+		t.track += t.speed 
+	} 
+	
+	function updateSensor (s, t) { 
+		if s.target === t.track {
+			s.state = "hit"; 
+		} else { 
+			s.state = "no hit"; 
+		} 
+	} 
+	
+	function main () { 
+		const train = { 
+			"speed" : 1.0, 
+			"direction": "straight",  
+			"track" : 0.0, 
+		};
+		
+		const sensor = { 
+			"target" : 5.0, 
+			"state" : "no hit": 
+		}; 
+		
+		const controller = { 
+			"state" : "off",
+			"train" : train , 
+			"sensor" : sensor, 
+		}; 
+		
+		turnOn(controller); 
+		console.log (JSON.stringify(controller, null, 2) ); 
+		while (controller.sensor.state !== "hit") { 
+			advanceTrain (controller.train); 
+			updateSensor(controller.sensor, controller.train); 
+			console.log(JSON.stringify(controller, null, 2) ); 
+		} 
+		barrierDown(controller); 
+		console.log(JSON.stringify(controller, null, 2) );
+	} 
+	main (); 
+		
+		 
+		
+		
+</script> 
+
+</body> 
+<html> 
+
+

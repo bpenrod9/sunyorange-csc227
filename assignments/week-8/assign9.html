@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory Table</title>
+</head>
+<body>
+    <h2>Directory</h2>
+    <table id="directoryTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <button onclick="addRow()">Add Row</button>
+    <button onclick="saveTable()">Save</button>
+
+    <script>
+        function addRow() {
+            const table = document.getElementById('directoryTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            const nameCell = newRow.insertCell(0);
+            const emailCell = newRow.insertCell(1);
+
+            const nameInput = document.createElement('input');
+            nameInput.type = 'text';
+            nameCell.appendChild(nameInput);
+
+            const emailInput = document.createElement('input');
+            emailInput.type = 'email';
+            emailCell.appendChild(emailInput);
+        }
+
+        function saveTable() {
+            const inputs = document.querySelectorAll('#directoryTable input');
+            inputs.forEach(input => input.setAttribute('readonly', true));
+        }
+    </script>
+</body>
+</html>
