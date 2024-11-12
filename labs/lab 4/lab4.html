@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Average Input</title>
+</head>
+<body>
+
+    <input id="in1" type="number"><br>
+    <input id="in2" type="number"><br>
+    <input id="in3" type="number"><br>
+    <input id="in4" type="number"><br>
+    <input id="in5" type="number"><br>
+    <input id="in6" type="number"><br>
+    <input id="in7" type="number"><br>
+    <input id="in8" type="number"><br>
+    <input id="in9" type="number"><br>
+    <input id="in10" type="number"><br>
+    <button onclick="calculateAverage()">Calculate Average</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateAverage() {
+            let sum = 0;
+            let count = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let input = document.getElementById('in' + i);
+                let value = input.value;
+
+                if (value !== '') {
+                    let number = parseFloat(value);
+                    if (!isNaN(number)) {
+                        sum += number;
+                        count++;
+                    }
+                }
+            }
+
+            let average = count > 0 ? (sum / count) : 0;
+            document.getElementById('result').textContent = 'Average: ' + average;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html> 
+<body> 
+
+<scrpit> 
+
+	class Table { 
+		constructor(id, size) { 
+			this.id = id; 
+			this.size = size; 
+			this.isOccupied = false; 
+			this.occupiedUntil = 0; 
+		} 
+	
+		occupy(time, partySize) { 
+			this.isOccupied = true; 
+			this.occupiedUntil = time + 	Math.floor(Math.random () * 3) + 1 
+			console.log('Table ${this.id} (size ${this.size})is now occupied by party of ${partySize} unitl hour ${this.occupiedUntil}.'); 
+	} 
+
+		free(time) { 
+			if (this.isOccupied && time => this.occupiedUntil { 
+				this.isOccupied = false; 
+				console.log('Table ${this.id} (size ${this.size}) is now free') 
+			}
+		} 
+	}
+	
+	class Resturant {
+		constrocutor(tables) { 
+			this.tables = tables; 
+		}
+		
+		seatParty(partySize, currentTime) { 
+	
+		const availableTable = this.tables
+			.filter(table => !tabe.isOccupied && table.size >= partySize) 
+			.sort ((a, b) =. a.size - b.size)[0]; 
+			
+		if (availabletable) {
+			availableTable.occupy(partySize, currentTime); 
+		
+
+</script> 
+
+</body>
+</html>
