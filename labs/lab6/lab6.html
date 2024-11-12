@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store and Retrieve Email</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Add Name and Email</h2>
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter name"><br><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter email"><br><br>
+    
+    <button onclick="addToIndex()">Add to Index</button>
+    
+    <p id="addResult"></p>
+
+    <hr>
+
+    <h2>Retrieve Email by Name</h2>
+    <label for="searchName">Name:</label>
+    <input type="text" id="searchName" placeholder="Enter name to search"><br><br>
+    
+    <button onclick="retrieveEmail()">Retrieve Email</button>
+    
+    <p id="searchResult"></p>
+
+    <script>
+        const emailIndex = {};
+
+        function addToIndex() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const resultElement = document.getElementById('addResult');
+
+            if (name === '' || email === '') {
+                resultElement.textContent = 'Please provide both a name and an email.';
+                resultElement.className = 'error';
+                return;
+            }
+
+            emailIndex[name] = email;
+
+            resultElement.textContent = `Successfully added ${name} with email ${email}.`;
+            resultElement.className = ''; 
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+        }
+
+        function retrieveEmail() {
+            const searchName = document.getElementById('searchName').value.trim();
+            const searchResult = document.getElementById('searchResult');
+
+            if (searchName === '') {
+                searchResult.textContent = 'Please enter a name to search.';
+                searchResult.className = 'error';
+                return;
+            }
+                     
+		 if (searchName in emailIndex) {
+                searchResult.textContent = `The email for ${searchName} is: ${emailIndex[searchName]}`;
+                searchResult.className = ''; // Remove error styling if found
+            } else {
+                searchResult.textContent = `Error: ${searchName} is not in the index.`;
+                searchResult.className = 'error';
+            }
+
+            document.getElementById('searchName').value = '';
+        }
+    </script>
+
+</body>
+</html>
