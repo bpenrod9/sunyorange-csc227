@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html lang='en'> 
+<head> 
+	<meta charset="UTF 8"> 
+	<meta name= "viewport" content="width=device-width , inital- scale=1.0"> 
+	<title> XMLHttpRequest </title> 
+	<style>
+		.error { 
+			color: red
+		}
+	</style> 
+</head> 
+
+<body> 
+<h1> NASA's Picture of the Day! </h1> 
+<button id="load-button"> Generate </button> 
+
+<h2 id="apod-title"><h2> 
+<img id="apod-image" src="" alt= "Nasa's Picture of the Day"> 
+<p id="apod-description"></p> 
+
+
+
+<script> 
+	document.getElementById('load-button').addEventLister('click', function () { 
+		fetch ('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY') 
+			.then(response => response.json() ) 
+			.then(data => { 
+				document.getElementById('apod-title').textContent = data.title; 
+				document.getElementById('apod-image').src = data.url;				
+			document.getElementById('apod-description').textContent = data.explination; 
+				})
+			.catch(error => { 
+					console.error ('Error generating image', error); 
+			}); 
+		}); 
+</script> 
+
+</body> 	
+</html> 			
+	 
+		 
+	

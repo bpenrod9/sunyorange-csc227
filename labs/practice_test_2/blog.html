@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Poster</title>
+</head>
+<body>
+
+  <h1>Create Blog Posts</h1>
+
+  <div id="postsContainer"></div>
+
+  <button id="newPostBtn">New Post</button>
+
+  <script>
+    const postsContainer = document.getElementById("postsContainer");
+    const newPostBtn = document.getElementById("newPostBtn");
+
+    newPostBtn.addEventListener("click", () => {
+      const post = document.createElement("div");
+      post.classList.add("post");
+
+      post.innerHTML = `
+        <label>Title:</label>
+        <input type="text" placeholder="Enter title">
+
+        <label>Body:</label>
+        <textarea rows="4" placeholder="Enter body text"></textarea>
+
+        <label>Tags:</label>
+        <input type="text" placeholder="Enter tags (comma-separated)">
+      `;
+
+      postsContainer.appendChild(post);
+    });
+  </script>
+
+</body>
+</html>
+
