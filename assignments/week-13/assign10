@@ -1,0 +1,10 @@
+1. 
+
+
+2. 
+
+
+3.
+
+
+4. Calling the sum function with a very high number such as 11111 will cause it to fail due to the number exceeding the maximum number that was given in the function, causing sum errors as it cannot continue add the numbers past the maximum given. 

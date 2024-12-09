@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+	function ButtonText(props) {
+            return (
+		<>
+                    Click me! {props.count}
+		</>
+            );
+	}
+
+        function MyButton(props) {
+            const [count, setCount] = React.useState(Number(props.initVal));
+
+            function handleClick() {
+                setCount(count + 1);
+            }
+
+            return (
+                <button onClick={handleClick}>
+                    <ButtonText count={count} />
+                </button>
+            );
+        }
+
+        function MyApp() {
+            
+
+            return (
+                <>
+                    <h1>Hello, world!</h1>
+
+                    <MyButton initVal="7" />
+                    <MyButton initVal="3" />
+                </>
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<MyApp />);
+
+    </script>
+       function RepeatingWord(props) {
+            const { word, times } = props;
+            const repeatedWords = Array.from({ length: times }, () => word).join(' ');
+
+            return <p>{repeatedWords}</p>;
+        }
+
+        function RepeatingWordForm() {
+            const [word, setWord] = React.useState("Hello");
+            const [times, setTimes] = React.useState(3);
+	}
+  
+</body>
+
+</html>
